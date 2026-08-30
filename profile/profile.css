@@ -280,6 +280,7 @@ body.reference-bg {
   pointer-events: none;
 }
 
+/* ★ 핵심 수정 부분: 비활성 슬라이드는 클릭 이벤트를 막고, 활성 슬라이드만 클릭 허용 ★ */
 .slide {
   position: absolute;
   top: 0;
@@ -291,10 +292,14 @@ body.reference-bg {
   display: flex;
   justify-content: center;
   align-items: center;
+  pointer-events: none; /* 화면 뒤에 가려진 슬라이드가 클릭을 방해하지 못하게 설정 */
+  z-index: 1;
 }
 
 .slide.active {
   opacity: 1;
+  pointer-events: auto; /* 현재 보이는 슬라이드만 클릭 가능하도록 변경 */
+  z-index: 5;
 }
 
 /* 1. 기본/LIFIN용: 꽉 채우기 스타일 */
