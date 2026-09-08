@@ -511,10 +511,6 @@ body.reference-bg {
     font-size: 0.65rem;
   }
 
-  .right-pane {
-    order: -1;
-  }
-
   .main-project-card {
     aspect-ratio: 4 / 3;
   }
