@@ -11,7 +11,7 @@
   --bg-frame: #0F0F10;
   --card-dark: #1A1A1C;
   --card-border: #28282B;
-  --theme-sky-blue: #8AC0FF;
+  --theme-sky-blue: #F37321;
   --text-white: #FFFFFF;
   --text-dark: #111111;
   --text-gray: #A0A0A5;
@@ -24,6 +24,7 @@ body.reference-bg {
   font-family: 'Inter', -apple-system, sans-serif;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 20px;
@@ -35,7 +36,8 @@ body.reference-bg {
   border-radius: var(--radius-outer);
   padding: 16px;
   width: 100%;
-  max-width: 1360px;
+  max-width: none;
+  min-height: calc(100vh - 24px);
   display: flex;
   gap: 16px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
@@ -45,17 +47,22 @@ body.reference-bg {
   .main-frame {
     flex-direction: column;
   }
+
+  .left-pane {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .left-pane {
-  flex: 42;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  flex: 1;
+  display: grid;
+  grid-template-rows: 54px 4fr 2fr;
+  gap: 8px;
 }
 
 .right-pane {
-  flex: 58;
+  flex: 3;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -73,19 +80,25 @@ body.reference-bg {
    LEFT PANE STYLES
    ========================================================================== */
 .contact-bar {
-  padding: 14px 20px;
+  height: 54px;
+  padding: 12px 20px;
   font-size: 0.85rem;
   color: var(--text-gray);
   letter-spacing: 0.3px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
 }
 
 .orange-about-card {
   background-color: var(--theme-sky-blue);
   border: none;
-  padding: 32px 28px 24px 28px;
+  padding: 48px 28px 36px 28px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  text-align: left;
 }
 
 .hero-title {
@@ -98,18 +111,18 @@ body.reference-bg {
 }
 
 .highlight-gray {
-  color: #6C7A89;
+  color: var(--text-white);
   font-weight: 900;
 }
 
 .about-desc {
-  font-size: 0.85rem;
-  line-height: 1.55;
-  color: #1A2332;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-white);
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding-right: 40px;
+  padding-right: 0;
   margin-bottom: 24px;
 }
 
@@ -149,12 +162,21 @@ body.reference-bg {
   display: flex;
   flex-direction: column;
   gap: 18px;
+  justify-content: center;
 }
 
 .info-row {
   display: flex;
-  gap: 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
   font-size: 0.88rem;
+  text-align: left;
+}
+
+.info-row:first-child {
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--card-border);
 }
 
 .info-label {
@@ -179,6 +201,7 @@ body.reference-bg {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0;
   width: 100%;
 }
 
@@ -206,12 +229,28 @@ body.reference-bg {
 }
 
 .nav-links {
-  display: flex;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: center;
-  justify-content: center;
-  gap: 36px;
+  justify-items: center;
+  text-align: center;
+  gap: 0;
   flex: 1;
   margin-right: 16px;
+}
+
+.nav-links .divider {
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.nav-links .divider:first-of-type {
+  left: 33.333%;
+}
+
+.nav-links .divider:last-of-type {
+  left: 66.667%;
 }
 
 .nav-item {
@@ -221,6 +260,7 @@ body.reference-bg {
   font-weight: 700;
   white-space: nowrap;
   transition: color 0.2s ease;
+  text-align: center;
 }
 
 .nav-item:hover {
@@ -243,9 +283,18 @@ body.reference-bg {
   cursor: pointer;
   font-size: 0.85rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
+}
+
+.menu-icon-btn span {
+  display: block;
+  width: 12px;
+  height: 1px;
+  margin: 2px 0;
+  background-color: var(--text-white);
 }
 
 .main-project-card {
